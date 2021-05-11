@@ -1,0 +1,35 @@
+@media screen and (max-width: 1263px) {
+    .country-detail {
+        .name {
+            margin: 0rem 0rem 1rem 0rem !important;
+        }
+    }
+
+    .back {
+        margin: 2.5rem 0rem !important;
+        img {
+          width: 1.5rem !important;
+          margin-right: 1rem;
+        }
+    }
+
+    img {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 959px) {
+    .country-detail {
+        .main-row {
+            .right-div {
+                padding-left: 1rem !important;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .first-row {
+        display: block;
+      }
+}

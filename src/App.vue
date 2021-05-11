@@ -1,28 +1,56 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <v-app :class="{dark: dark}">
+    <v-main>
+      <Navbar />
+      <router-view></router-view>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import Navbar from "@/components/Navbar";
+import { mapGetters } from 'vuex'
 
 export default {
   name: "App",
-  components: {
-    HelloWorld,
+  computed: {
+    ...mapGetters(['dark'])
   },
+  components: {
+    Navbar
+  },
+
+  data: () => ({
+    //
+  }),
 };
 </script>
 
 <style lang="scss">
+  @import '@/assets/css/_media.scss';
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  background-color: hsl(0, 0%, 98%);
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  overflow-x: hidden;
+}
+  
+.dark  {
+    background-color: hsl(207, 26%, 17%) !important;
+    color: #fff !important;
 }
 </style>
