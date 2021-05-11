@@ -41,9 +41,9 @@ export default {
   box-sizing: border-box;
 }
 
-html {
-  font-size: 62.5%;
-}
+// html {
+//   font-size: 62.5%;
+// }
 
 body {
   overflow-x: hidden;
