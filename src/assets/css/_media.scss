@@ -31,5 +31,9 @@
 @media screen and (max-width: 575px) {
     .first-row {
         display: block;
+
+        .search .v-toolbar{
+            margin-bottom: 2rem !important;
+        }
       }
 }

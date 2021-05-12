@@ -1,7 +1,7 @@
 <template>
   <v-container class="landingpage" :class="{dark: dark}">
     <div class="first-row mt-5">
-      <div class="search mr-4 mb-5">
+      <div class="search mr-4">
         <v-toolbar dense floating>
           <v-text-field
             hide-details
