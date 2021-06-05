@@ -48,6 +48,14 @@
             />
           </v-col>
         </v-row>
+        <div class="text-center">
+    <v-pagination
+      v-model="page"
+      :length="length"
+      circle
+      :total-visible="7"
+    ></v-pagination>
+  </div>
       </div>
     </div>
   </v-container>
@@ -61,7 +69,10 @@ import { mapGetters } from 'vuex';
 export default {
   name: "LandingPage",
   computed: {
-    ...mapGetters(['dark'])
+    ...mapGetters(['dark']),
+    length() {
+      return Math.ceil(this.countries.length/9)
+    }
   },
   methods: {
     countryDetail(value) {
@@ -114,6 +125,7 @@ export default {
       filterValue: "",
       searchValue: "",
       loading: false,
+      page: 1,
     };
   },
   mounted() {

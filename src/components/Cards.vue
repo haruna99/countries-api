@@ -1,5 +1,5 @@
 <template>
-  <v-card :class="{dark: dark}" class="mx-auto my-4">
+  <v-card @click="countryDetail(country)" :class="{dark: dark}"  class="mx-auto my-4">
     <v-img height="200" :src="image"></v-img>
 
     <v-card-title>{{ name }}</v-card-title>
@@ -8,7 +8,7 @@
       <div><b>Population</b>: {{ population }}</div>
       <div><b>Region</b>: {{ region }}</div>
       <div><b>Capital</b>: {{ capital }}</div>
-      <v-btn @click="countryDetail(country)" class="my-5">View details</v-btn>
+      <!-- <v-btn @click="countryDetail(country)" class="my-5">View details</v-btn> -->
     </v-card-text>
   </v-card>
 </template>
