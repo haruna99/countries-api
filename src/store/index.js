@@ -26,7 +26,6 @@ export default new Vuex.Store({
       commit('SET_COUNTRY_DETAIL', payload)
     }
   },
-  modules: {},
   getters: {
     countryDetail(state) {
       return state.countryDetail
