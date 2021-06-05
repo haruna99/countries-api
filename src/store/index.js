@@ -13,9 +13,19 @@ export default new Vuex.Store({
   mutations: {
     SET_MODE(state, payload) {
       state.dark = payload
+    },
+    SET_COUNTRY_DETAIL(state, payload) {
+      state.countryDetail = payload
     }
   },
-  actions: {},
+  actions: {
+    setMode({commit}, payload) {
+      commit('SET_MODE', payload)
+    },
+    setCountryDetail({commit}, payload) {
+      commit('SET_COUNTRY_DETAIL', payload)
+    }
+  },
   modules: {},
   getters: {
     countryDetail(state) {

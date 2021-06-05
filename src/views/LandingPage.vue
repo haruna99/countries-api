@@ -76,7 +76,7 @@ export default {
   },
   methods: {
     countryDetail(value) {
-      this.$store.state.countryDetail = value;
+      this.$store.dispatch('setCountryDetail', value);
       this.$router.push('/country-detail')
     },
   },
@@ -93,11 +93,11 @@ export default {
           .then((response) => {
             this.loading = false;
             this.countries = response;
-            console.log(response);
           })
           .catch((err) => {
             this.loading = false;
             console.log(err);
+          
           });
       }
     },
@@ -109,7 +109,6 @@ export default {
           .then((response) => {
             this.loading = false;
             this.countries = response;
-            console.log(response);
           })
           .catch((err) => {
             this.loading = false;
@@ -135,7 +134,6 @@ export default {
       .then((response) => {
         this.countries = response;
         this.loading = false;
-        console.log(response);
       })
       .catch((err) => {
         this.loading = false;

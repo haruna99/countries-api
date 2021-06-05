@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     mode() {
-      this.$store.commit("SET_MODE", !this.dark);
+      this.$store.dispatch("setMode", !this.dark);
     },
   },
 };
