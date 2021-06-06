@@ -4,9 +4,25 @@
       <div class="main-div">
         <div class="title">Where in the world?</div>
         <button @click="mode" class="button">
-          <span class="material-icons"> dark_mode </span>
+          <!-- <span class="material-icons"> dark_mode </span> -->
+          <img
+            style="width: 1rem"
+            class="mr-1"
+            src="@/assets/img/icon-moon-dark.svg"
+            alt=""
+            v-if="dark"
+          />
+          <img
+            style="width: 1rem"
+            class="mr-1"
+            src="@/assets/img/icon-moon-light.svg"
+            alt=""
+            v-if="!dark"
+
+          />
+
           <span class="mode-text">
-              {{ dark ? "Dark Mode" : "Light Mode" }}
+            {{ dark ? "Dark Mode" : "Light Mode" }}
           </span>
         </button>
       </div>
@@ -44,8 +60,8 @@ export default {
   }
 
   .mode-text {
-      font-size: 1rem;
-      margin-bottom: 2rem;
+    font-size: 1rem;
+    margin-bottom: 2rem;
   }
 }
 
