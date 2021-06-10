@@ -50,6 +50,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - CSS custom properties
 - Flexbox
 - [Vue.js](https://vuejs.org/) - JS framework
-- [Vue.js](https://vuetifyjs.com/) - Vue UI library
+- [Vuetify](https://vuetifyjs.com/) - Vue UI library
 - [SASS](https://sass-lang.com/) - For styles
 
