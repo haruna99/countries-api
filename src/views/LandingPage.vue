@@ -1,5 +1,5 @@
 <template>
-  <v-container class="landingpage" :class="{dark: dark}">
+  <v-container class="landingpage" :class="{ dark: dark }">
     <div class="first-row mt-5">
       <div class="search mr-4">
         <v-toolbar dense floating>
@@ -34,7 +34,7 @@
             lg="3"
             md="4"
             sm="6"
-            v-for="(country, index) in countries"
+            v-for="(country, index) in subData"
             :key="index"
           >
             <Cards
@@ -49,13 +49,14 @@
           </v-col>
         </v-row>
         <div class="text-center">
-    <v-pagination
-      v-model="page"
-      :length="length"
-      circle
-      :total-visible="7"
-    ></v-pagination>
-  </div>
+          <v-pagination
+          v-model="page"
+          @input="paginateFunction(page)"
+          :length="total_pages"
+          circle
+          :total-visible="7"
+        ></v-pagination>
+        </div>
       </div>
     </div>
   </v-container>
@@ -64,20 +65,24 @@
 <script>
 import Cards from "@/components/Cards";
 import Loader from "@/components/Loader";
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
+import paginator from "../pagination.js";
 
 export default {
   name: "LandingPage",
   computed: {
-    ...mapGetters(['dark']),
+    ...mapGetters(["dark"]),
     length() {
-      return Math.ceil(this.countries.length/9)
-    }
+      return Math.ceil(this.countries.length / 9);
+    },
   },
   methods: {
     countryDetail(value) {
-      this.$store.dispatch('setCountryDetail', value);
-      this.$router.push('/country-detail')
+      this.$store.dispatch("setCountryDetail", value);
+      this.$router.push("/country-detail");
+    },
+    paginateFunction(start) {
+      this.subData = paginator(this.countries, start, 10).data;
     },
   },
   components: {
@@ -93,11 +98,11 @@ export default {
           .then((response) => {
             this.loading = false;
             this.countries = response;
+            this.total_pages = Math.ceil(this.countries.length / 10)
           })
           .catch((err) => {
             this.loading = false;
             console.log(err);
-          
           });
       }
     },
@@ -109,6 +114,7 @@ export default {
           .then((response) => {
             this.loading = false;
             this.countries = response;
+            this.total_pages = Math.ceil(this.countries.length / 10)
           })
           .catch((err) => {
             this.loading = false;
@@ -119,21 +125,52 @@ export default {
   },
   data() {
     return {
+      total_pages: null,
+      subData: null,
+      page: 1,
       items: ["Africa", "Americas", "Asia", "Europe", "Oceania"],
       countries: "",
       filterValue: "",
       searchValue: "",
       loading: false,
-      page: 1,
+      products: [
+        {
+          id: 1,
+          name: "Product 1",
+        },
+        {
+          id: 2,
+          name: "Product 2",
+        },
+        {
+          id: 3,
+          name: "Product 3",
+        },
+        {
+          id: 4,
+          name: "Product 4",
+        },
+        {
+          id: 5,
+          name: "Product 5",
+        },
+        {
+          id: 6,
+          name: "Product 6",
+        },
+      ],
     };
   },
-  mounted() {
+  created() {
     this.loading = true;
     fetch("https://restcountries.eu/rest/v2/all")
       .then((res) => res.json())
       .then((response) => {
         this.countries = response;
         this.loading = false;
+        this.total_pages = Math.ceil(this.countries.length / 10)
+        this.paginateFunction(1);
+
       })
       .catch((err) => {
         this.loading = false;
@@ -155,12 +192,15 @@ export default {
 }
 
 .landingpage.dark {
-    .v-toolbar, .v-input__slot {
-        background-color: hsl(209, 23%, 22%) !important;
-    }
+  .v-toolbar,
+  .v-input__slot {
+    background-color: hsl(209, 23%, 22%) !important;
+  }
 
-    .v-label, .v-icon, .v-select .v-select__selections {
-        color: #fff !important;
-    }
+  .v-label,
+  .v-icon,
+  .v-select .v-select__selections {
+    color: #fff !important;
+  }
 }
 </style>
