@@ -98,6 +98,7 @@ export default {
           .then((response) => {
             this.loading = false;
             this.countries = response;
+            this.paginateFunction(1)
             this.total_pages = Math.ceil(this.countries.length / 10)
           })
           .catch((err) => {
@@ -114,6 +115,7 @@ export default {
           .then((response) => {
             this.loading = false;
             this.countries = response;
+            this.paginateFunction(1)
             this.total_pages = Math.ceil(this.countries.length / 10)
           })
           .catch((err) => {
@@ -169,6 +171,10 @@ export default {
   .v-toolbar,
   .v-input__slot {
     background-color: hsl(209, 23%, 22%) !important;
+  }
+
+  #input-10{
+    color: #fff !important;
   }
 
   .v-label,
