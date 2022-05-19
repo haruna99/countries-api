@@ -72,9 +72,6 @@ export default {
   name: "LandingPage",
   computed: {
     ...mapGetters(["dark"]),
-    length() {
-      return Math.ceil(this.countries.length / 9);
-    },
   },
   methods: {
     countryDetail(value) {
@@ -99,7 +96,7 @@ export default {
             this.loading = false;
             this.countries = response;
             this.paginateFunction(1)
-            this.total_pages = Math.ceil(this.countries.length / 10)
+            this.total_pages = Math.ceil(this.countries.length / 12)
           })
           .catch((err) => {
             this.loading = false;
@@ -116,7 +113,7 @@ export default {
             this.loading = false;
             this.countries = response;
             this.paginateFunction(1)
-            this.total_pages = Math.ceil(this.countries.length / 10)
+            this.total_pages = Math.ceil(this.countries.length / 12)
           })
           .catch((err) => {
             this.loading = false;
@@ -144,7 +141,7 @@ export default {
       .then((response) => {
         this.countries = response;
         this.loading = false;
-        this.total_pages = Math.ceil(this.countries.length / 10)
+        this.total_pages = Math.ceil(this.countries.length / 12)
         this.paginateFunction(1);
 
       })
