@@ -22,7 +22,7 @@
           />
 
           <span class="mode-text">
-            {{ dark ? "Dark Mode" : "Light Mode" }}
+            {{ dark ? "Light Mode" : "Dark Mode" }}
           </span>
         </button>
       </div>

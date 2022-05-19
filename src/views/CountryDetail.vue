@@ -16,7 +16,7 @@
               <span>Native Name</span>: {{ countryDetail.nativeName }}
             </div>
             <div class="main-text">
-              <span>Population</span>: {{ countryDetail.population }}
+              <span>Population</span>: {{ String(countryDetail.population).replace(/(.)(?=(\d{3})+$)/g,'$1,') }}
             </div>
             <div class="main-text">
               <span>Region</span>: {{ countryDetail.region }}
@@ -44,7 +44,7 @@
           </v-col>
         </v-row>
         <v-row>
-          <v-col>
+          <v-col v-if="countryDetail.borders">
             <div
               v-if="countryDetail.borders.length > 0"
               class="main-text borders"
@@ -63,6 +63,9 @@
               <span class="mr-3">Border Countries:</span>
               <div>None</div>
             </div>
+          </v-col>
+          <v-col v-else>
+            <span class="mr-3">Border Countries: NONE</span>
           </v-col>
         </v-row>
       </v-col>
@@ -95,7 +98,7 @@ export default {
       this.loading = true;
       this.currency = [],
       this.language = [],
-      fetch(`https://restcountries.eu/rest/v2/alpha/${code}`)
+      fetch(`https://restcountries.com/v2/alpha/${code}`)
         .then((res) => res.json())
         .then((response) => {
           // this.$router.go()
@@ -165,6 +168,8 @@ export default {
   // color: #fff !important;
   img {
     width: 95%;
+    box-shadow: 2px 2px 2px grey;
+    border-radius: .5rem
   }
 
   .name {

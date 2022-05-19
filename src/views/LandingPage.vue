@@ -82,7 +82,7 @@ export default {
       this.$router.push("/country-detail");
     },
     paginateFunction(start) {
-      this.subData = paginator(this.countries, start, 10).data;
+      this.subData = paginator(this.countries, start, 12).data;
     },
   },
   components: {
@@ -93,7 +93,7 @@ export default {
     filterValue(value) {
       if (value != "") {
         this.loading = true;
-        fetch(`https://restcountries.eu/rest/v2/region/${value}`)
+        fetch(`https://restcountries.com/v2/region/${value}`)
           .then((res) => res.json())
           .then((response) => {
             this.loading = false;
@@ -110,7 +110,7 @@ export default {
     searchValue(value) {
       if (value != "") {
         this.loading = true;
-        fetch(`https://restcountries.eu/rest/v2/name/${value}`)
+        fetch(`https://restcountries.com/v2/name/${value}`)
           .then((res) => res.json())
           .then((response) => {
             this.loading = false;
@@ -139,7 +139,7 @@ export default {
   },
   created() {
     this.loading = true;
-    fetch("https://restcountries.eu/rest/v2/all")
+    fetch("https://restcountries.com/v2/all")
       .then((res) => res.json())
       .then((response) => {
         this.countries = response;
